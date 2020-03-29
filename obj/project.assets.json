@@ -1036,11 +1036,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Prasanti\\.Net Workspace\\sqliteApp\\sqliteApp.csproj",
+      "projectUniqueName": "D:\\Prasanti\\.Net Workspace\\SqliteAppRepository\\sqliteApp.csproj",
       "projectName": "sqliteApp",
-      "projectPath": "D:\\Prasanti\\.Net Workspace\\sqliteApp\\sqliteApp.csproj",
+      "projectPath": "D:\\Prasanti\\.Net Workspace\\SqliteAppRepository\\sqliteApp.csproj",
       "packagesPath": "C:\\Users\\739279\\.nuget\\packages\\",
-      "outputPath": "D:\\Prasanti\\.Net Workspace\\sqliteApp\\obj\\",
+      "outputPath": "D:\\Prasanti\\.Net Workspace\\SqliteAppRepository\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\739279\\AppData\\Roaming\\NuGet\\NuGet.Config"

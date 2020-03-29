@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bXT8tgDhRjlSlZdQaGz1bV6JNeAEZsA+nLLWJ0wtiZ4np2cSffw5rMcu98gvmfLufHd+Hq/mc6Jytw3LwcxLCw==",
+  "dgSpecHash": "pN0YETLPFvLIVzfHUklu6H2Dzp4H6mf4fedZ4DVD1J8ZzBQefADrzVI4k1RCYT7V49rT69CzvPk7wl5WTy1V3Q==",
   "success": true,
-  "projectFilePath": "D:\\Prasanti\\.Net Workspace\\sqliteApp\\sqliteApp.csproj",
+  "projectFilePath": "D:\\Prasanti\\.Net Workspace\\SqliteAppRepository\\sqliteApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\739279\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\739279\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
