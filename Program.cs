@@ -98,7 +98,8 @@ namespace sqliteApp
                         var department = reader.GetString(1);
                         Console.WriteLine("Student Name : " + student + "   Department : "+ department);
                     }
-                }       
+                } 
+                Console.ReadLine();      
             }            
         }
     }
