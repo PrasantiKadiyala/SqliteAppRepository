@@ -7,6 +7,8 @@ namespace sqliteApp
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("This app lists the departments and the students records of the college.");
+            Console.WriteLine();
         
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
             connectionStringBuilder.DataSource = "./Students.db";
@@ -27,7 +29,7 @@ namespace sqliteApp
                 var createTableCmd = connection.CreateCommand();
                 createTableCmd.CommandText = "CREATE TABLE DEPARTMENT(ID int PRIMARY KEY NOT NULL, Name VARCHAR(50))";
                 int createTableResult = createTableCmd.ExecuteNonQuery();
-                Console.WriteLine(createTableResult);
+                
                 //Seed some data:
                 using (var transaction = connection.BeginTransaction())
                 {
@@ -48,6 +50,7 @@ namespace sqliteApp
                 var select = connection.CreateCommand();
                 select.CommandText = "SELECT name FROM DEPARTMENT";
 
+                Console.WriteLine("Departments :");
                 using (var reader = select.ExecuteReader())
                 {
                     while (reader.Read())
@@ -56,6 +59,7 @@ namespace sqliteApp
                         Console.WriteLine(message);
                     }
                 }
+                Console.WriteLine();
 
                 createTableCmd.CommandText = "CREATE TABLE STUDENTS ("+
                                                 "ROLLNO int NOT NULL,"+
@@ -66,7 +70,7 @@ namespace sqliteApp
                                                 "REFERENCES DEPARTMENT(ID));";
     
                 int studentTableResult = createTableCmd.ExecuteNonQuery();
-                Console.WriteLine(studentTableResult);
+                
                 //Seed some data:
                 using (var transaction = connection.BeginTransaction())
                 {
@@ -89,7 +93,7 @@ namespace sqliteApp
                 var selectCmd = connection.CreateCommand();
                 selectCmd.CommandText = "SELECT std.NAME, dept.NAME FROM STUDENTS std "+
                                        "inner join DEPARTMENT dept on std.DEPARTMENT = dept.ID";
-
+                Console.WriteLine("Enrolled students:");
                 using (var reader = selectCmd.ExecuteReader())
                 {
                     while (reader.Read())
