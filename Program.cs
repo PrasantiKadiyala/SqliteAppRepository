@@ -11,7 +11,7 @@ namespace sqliteApp
             Console.WriteLine();
         
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = "./Students.db";
+            connectionStringBuilder.DataSource = "sqlitevol/test.db";
 
             using(var connection= new SqliteConnection(connectionStringBuilder.ConnectionString))
             {
