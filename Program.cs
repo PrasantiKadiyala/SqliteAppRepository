@@ -1,5 +1,5 @@
 ﻿using System;
-using Microsoft.Data.Sqlite;
+using MySql.Data.MySqlClient;
 
 namespace sqliteApp
 {
@@ -10,24 +10,27 @@ namespace sqliteApp
             Console.WriteLine("This app lists the departments and the students records of the college.");
             Console.WriteLine();
         
-            var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = "sqlitevol/test.db";
+          //  var connectionStringBuilder = new SqliteConnectionStringBuilder();
+            //connectionStringBuilder.DataSource = "sqlitevol/test.db";
 
-            using(var connection= new SqliteConnection(connectionStringBuilder.ConnectionString))
+            string connstring = string.Format("Server=mysql; database=mysql; UID=UserName; password=your password");
+            
+
+            using(var connection = new MySqlConnection(connstring))
             {
                 connection.Open();
 
                 var delTableCmd = connection.CreateCommand();
 
-                 delTableCmd.CommandText = "DROP TABLE IF EXISTS STUDENTS";
+                 delTableCmd.CommandText = "DROP TABLE IF EXISTS STUDENTS;";
                 delTableCmd.ExecuteNonQuery();
 
-                delTableCmd.CommandText = "DROP TABLE IF EXISTS DEPARTMENT";
+                delTableCmd.CommandText = "DROP TABLE IF EXISTS DEPARTMENT;";
                 delTableCmd.ExecuteNonQuery();
              
 
                 var createTableCmd = connection.CreateCommand();
-                createTableCmd.CommandText = "CREATE TABLE DEPARTMENT(ID int PRIMARY KEY NOT NULL, Name VARCHAR(50))";
+                createTableCmd.CommandText = "CREATE TABLE DEPARTMENT(ID int PRIMARY KEY NOT NULL, Name VARCHAR(50));";
                 int createTableResult = createTableCmd.ExecuteNonQuery();
                 
                 //Seed some data:
@@ -35,20 +38,20 @@ namespace sqliteApp
                 {
                     var insertCmd = connection.CreateCommand();
 
-                    insertCmd.CommandText = "INSERT INTO DEPARTMENT VALUES(1,'COMPUTERS')";
+                    insertCmd.CommandText = "INSERT INTO DEPARTMENT VALUES(1,'COMPUTERS');";
                     insertCmd.ExecuteNonQuery();
 
-                    insertCmd.CommandText = "INSERT INTO DEPARTMENT VALUES(2,'ELECTRONICS')";
+                    insertCmd.CommandText = "INSERT INTO DEPARTMENT VALUES(2,'ELECTRONICS');";
                     insertCmd.ExecuteNonQuery();
 
-                    insertCmd.CommandText = "INSERT INTO DEPARTMENT VALUES(3,'MECHANICAL')";
+                    insertCmd.CommandText = "INSERT INTO DEPARTMENT VALUES(3,'MECHANICAL');";
                     insertCmd.ExecuteNonQuery();
 
                     transaction.Commit();
                 }               
                 //Read the newly inserted data:
                 var select = connection.CreateCommand();
-                select.CommandText = "SELECT name FROM DEPARTMENT";
+                select.CommandText = "SELECT name FROM DEPARTMENT;";
 
                 Console.WriteLine("Departments :");
                 using (var reader = select.ExecuteReader())
@@ -76,13 +79,13 @@ namespace sqliteApp
                 {
                     var insertCmd = connection.CreateCommand();
 
-                    insertCmd.CommandText = "INSERT INTO STUDENTS VALUES(1,'SRAVANI',1)";
+                    insertCmd.CommandText = "INSERT INTO STUDENTS VALUES(1,'SRAVANI',1);";
                     insertCmd.ExecuteNonQuery();
 
-                    insertCmd.CommandText = "INSERT INTO STUDENTS VALUES(2,'SRAVANTI',2)";
+                    insertCmd.CommandText = "INSERT INTO STUDENTS VALUES(2,'SRAVANTI',2);";
                     insertCmd.ExecuteNonQuery();
 
-                    insertCmd.CommandText = "INSERT INTO STUDENTS VALUES(3,'JYOTHI',3)";
+                    insertCmd.CommandText = "INSERT INTO STUDENTS VALUES(3,'JYOTHI',3);";
                     insertCmd.ExecuteNonQuery();
 
                     transaction.Commit();
@@ -92,7 +95,7 @@ namespace sqliteApp
                 //Read the newly inserted data:
                 var selectCmd = connection.CreateCommand();
                 selectCmd.CommandText = "SELECT std.NAME, dept.NAME FROM STUDENTS std "+
-                                       "inner join DEPARTMENT dept on std.DEPARTMENT = dept.ID";
+                                       "inner join DEPARTMENT dept on std.DEPARTMENT = dept.ID;";
                 Console.WriteLine("Enrolled students:");
                 using (var reader = selectCmd.ExecuteReader())
                 {

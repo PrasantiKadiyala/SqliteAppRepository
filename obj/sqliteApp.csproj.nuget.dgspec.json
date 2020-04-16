@@ -36,9 +36,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.Sqlite": {
+            "MySqlConnector": {
               "target": "Package",
-              "version": "[3.1.0, )"
+              "version": "[0.61.0, )"
             }
           },
           "imports": [

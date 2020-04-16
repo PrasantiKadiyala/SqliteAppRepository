@@ -5,8 +5,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.0"/>
+  </ItemGroup>!-->
+
+   <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="0.61.0" />
   </ItemGroup>
 
 </Project>
