@@ -7,14 +7,14 @@ namespace sqliteApp
     {
         static void Main(string[] args)
         {
-            var dbPass = Environment.GetEnvironmentVariable("DB_PASSWORD");
+            var envVars = Environment.GetEnvironmentVariables();
             Console.WriteLine("This app lists the departments and the students records of the college.");
             Console.WriteLine();
 
             //  var connectionStringBuilder = new SqliteConnectionStringBuilder();
             //connectionStringBuilder.DataSource = "sqlitevol/test.db";
 
-            string connstring = string.Format("Server=mysql,3306; database=mysql; UID=root; password={0}", dbPass);
+            string connstring = string.Format("Server=mysql,3306; database=mysql; UID=root; password={0}", envVars["DB_PASSWORD"]);
 
 
             using (var connection = new MySqlConnection(connstring))
