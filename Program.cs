@@ -41,9 +41,8 @@ namespace sqliteApp
 
                 Console.WriteLine("DEpartment table created");
 
-                //Seed some data:
-                using (var transaction = connection.BeginTransaction())
-                {
+                
+                    Console.WriteLine("Inserting entries in Department Table");
                     var insertCmd = connection.CreateCommand();
 
                     insertCmd.CommandText = "INSERT INTO DEPARTMENT VALUES(1,'COMPUTERS');";
@@ -53,10 +52,9 @@ namespace sqliteApp
                     insertCmd.ExecuteNonQuery();
 
                     insertCmd.CommandText = "INSERT INTO DEPARTMENT VALUES(3,'MECHANICAL');";
-                    insertCmd.ExecuteNonQuery();
-
-                    transaction.Commit();
-                }               
+                    insertCmd.ExecuteNonQuery();                   
+                           
+                
                 //Read the newly inserted data:
                 var select = connection.CreateCommand();
                 select.CommandText = "SELECT name FROM DEPARTMENT;";
@@ -82,10 +80,8 @@ namespace sqliteApp
     
                 int studentTableResult = createTableCmd.ExecuteNonQuery();
                 
-                //Seed some data:
-                using (var transaction = connection.BeginTransaction())
-                {
-                    var insertCmd = connection.CreateCommand();
+               
+                  
 
                     insertCmd.CommandText = "INSERT INTO STUDENTS VALUES(1,'SRAVANI',1);";
                     insertCmd.ExecuteNonQuery();
@@ -96,9 +92,7 @@ namespace sqliteApp
                     insertCmd.CommandText = "INSERT INTO STUDENTS VALUES(3,'JYOTHI',3);";
                     insertCmd.ExecuteNonQuery();
 
-                    transaction.Commit();
-                }
-
+                    
 
                 //Read the newly inserted data:
                 var selectCmd = connection.CreateCommand();
