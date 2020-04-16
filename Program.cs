@@ -14,8 +14,9 @@ namespace sqliteApp
             //  var connectionStringBuilder = new SqliteConnectionStringBuilder();
             //connectionStringBuilder.DataSource = "sqlitevol/test.db";
 
-            string connstring = string.Format("Server=mysql,3306; database=mysql; UID=root; password={0}", envVars["DB_PASSWORD"]);
-
+            //string connstring = string.Format("Server=mysql,3306; database=mysql; UID=root; password={0}", envVars["DB_PASSWORD"]);
+            string connstring = string.Format("Server={0},{1}; database={2}; UID={3}; password={4}",envVars["DB_SERVER"], envVars["DB_PORT"],
+            envVars["DB_DATABASE"],envVars["DB_UID"],envVars["DB_PASSWORD"]);
 
             using (var connection = new MySqlConnection(connstring))
             {
