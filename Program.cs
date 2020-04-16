@@ -13,7 +13,7 @@ namespace sqliteApp
           //  var connectionStringBuilder = new SqliteConnectionStringBuilder();
             //connectionStringBuilder.DataSource = "sqlitevol/test.db";
 
-            string connstring = string.Format("Server=mysql; database=mysql; UID=UserName; password=your password");
+            string connstring = string.Format("Server=mysql; database=mysql; UID=sa; password=Passw0rd1");
             
 
             using(var connection = new MySqlConnection(connstring))
