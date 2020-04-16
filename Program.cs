@@ -18,6 +18,8 @@ namespace sqliteApp
             string connstring = string.Format("Server={0},{1}; database={2}; UID={3}; password={4}",envVars["DB_SERVER"], envVars["DB_PORT"],
             envVars["DB_DATABASE"],envVars["DB_UID"],envVars["DB_PASSWORD"]);
 
+            Console.WriteLine(string.Format("connection string is {0}",connstring));
+
             using (var connection = new MySqlConnection(connstring))
             {
                 connection.Open();
