@@ -20,19 +20,27 @@ namespace sqliteApp
             {
                 connection.Open();
 
+                Console.WriteLine("Yay Connection Succeeded!!!");
+
                 var delTableCmd = connection.CreateCommand();
 
                  delTableCmd.CommandText = "DROP TABLE IF EXISTS STUDENTS;";
-                delTableCmd.ExecuteNonQuery();
+                 delTableCmd.ExecuteNonQuery();
+
+                 Console.WriteLine("Deleted existing Students table ");
 
                 delTableCmd.CommandText = "DROP TABLE IF EXISTS DEPARTMENT;";
                 delTableCmd.ExecuteNonQuery();
-             
+                
+                Console.WriteLine("Deleted existing DEPARTMENT table ");
 
                 var createTableCmd = connection.CreateCommand();
                 createTableCmd.CommandText = "CREATE TABLE DEPARTMENT(ID int PRIMARY KEY NOT NULL, Name VARCHAR(50));";
                 int createTableResult = createTableCmd.ExecuteNonQuery();
                 
+
+                Console.WriteLine("DEpartment table created");
+
                 //Seed some data:
                 using (var transaction = connection.BeginTransaction())
                 {
