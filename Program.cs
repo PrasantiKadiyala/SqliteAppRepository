@@ -8,17 +8,15 @@ namespace sqliteApp
         static void Main(string[] args)
         {
             var envVars = Environment.GetEnvironmentVariables();
+
+            string connstring = string.Format("Server={0},{1}; database={2}; UID={3}; password={4}", envVars["DB_SERVER"], envVars["DB_PORT"],
+            envVars["DB_DATABASE"], envVars["DB_UID"], envVars["DB_PASSWORD"]);
+
             Console.WriteLine("This app lists the departments and the students records of the college.");
             Console.WriteLine();
 
             //  var connectionStringBuilder = new SqliteConnectionStringBuilder();
             //connectionStringBuilder.DataSource = "sqlitevol/test.db";
-
-            //string connstring = string.Format("Server=mysql,3306; database=mysql; UID=root; password={0}", envVars["DB_PASSWORD"]);
-            string connstring = string.Format("Server={0},{1}; database={2}; UID={3}; password={4}",envVars["DB_SERVER"], envVars["DB_PORT"],
-            envVars["DB_DATABASE"],envVars["DB_UID"],envVars["DB_PASSWORD"]);
-
-            Console.WriteLine(string.Format("connection string is {0}",connstring));
 
             using (var connection = new MySqlConnection(connstring))
             {
@@ -37,7 +35,7 @@ namespace sqliteApp
                 createTableCmd.CommandText = "CREATE TABLE DEPARTMENT(ID int PRIMARY KEY NOT NULL, Name VARCHAR(50));";
                 int createTableResult = createTableCmd.ExecuteNonQuery();
 
-               
+
                 var insertCmd = connection.CreateCommand();
 
                 insertCmd.CommandText = "INSERT INTO DEPARTMENT VALUES(1,'COMPUTERS');";
@@ -48,7 +46,6 @@ namespace sqliteApp
 
                 insertCmd.CommandText = "INSERT INTO DEPARTMENT VALUES(3,'MECHANICAL');";
                 insertCmd.ExecuteNonQuery();
-
 
                 //Read the newly inserted data:
                 var select = connection.CreateCommand();
@@ -84,7 +81,6 @@ namespace sqliteApp
 
                 insertCmd.CommandText = "INSERT INTO STUDENTS VALUES(3,'JYOTHI',3);";
                 insertCmd.ExecuteNonQuery();
-
 
                 //Read the newly inserted data:
                 var selectCmd = connection.CreateCommand();
