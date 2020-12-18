@@ -17,7 +17,7 @@ namespace sqliteApp
 
             //  var connectionStringBuilder = new SqliteConnectionStringBuilder();
             //connectionStringBuilder.DataSource = "sqlitevol/test.db";
-            //adding lines to check the job in jenkins
+            //    adding lines to check the job in jenkins -- again
 
             using (var connection = new MySqlConnection(connstring))
             {
